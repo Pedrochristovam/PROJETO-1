@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Aluno - Pedro Christovam</title>
+    <link rel="stylesheet" href="app.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pedro Christovam Marques</h1>
+            <p>Estudante de Ciência da Computação</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="sidebar">
+                <div class="card">
+                    <h2> Galeria de Fotos</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-container">
+                            <img id="mainPhoto" class="main-photo" src="pedrofoto.jpg" alt="Foto Principal">
+                        </div>
+                        <div class="photo-thumbnails">
+                            <img class="thumbnail active" src="pedrofoto.jpg" alt="Foto 1" onclick="changePhoto(this)">
+                            <img class="thumbnail" src="pedro-casual.jpg" alt="Foto 2" onclick="changePhoto(this)">
+                            <img class="thumbnail" src="pedro-formal.jpg" alt="Foto 3" onclick="changePhoto(this)">
+                            <img class="thumbnail" src="pedro-trabalho.jpg" alt="Foto 4" onclick="changePhoto(this)">
+                        </div>
+                        <p><em>Clique nas miniaturas para visualizar</em></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>ℹInformações Básicas</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Nome Completo:</td>
+                            <td>Pedro Christovam Marques</td>
+                        </tr>
+                        <tr>
+                            <td>RA:</td>
+                            <td>124117694</td>
+                        </tr>
+                        <tr>
+                            <td>Curso:</td>
+                            <td>Ciências da Computação</td>
+                        </tr>
+                        <tr>
+                            <td>Período:</td>
+                            <td>3º Semestre</td>
+                        </tr>
+                        <tr>
+                            <td>Idade:</td>
+                            <td>19 anos</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Contato</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Endereço:</td>
+                            <td>Rua Tucuman 565<br>Bairro São Geraldo<br>Região Leste</td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>pedrochristovam053@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Cidade:</td>
+                            <td>Belo Horizonte - MG</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <h2>Unidades Curriculares Cursadas</h2>
+                    <ul class="uc-list">
+                        <li>Modelagem de Software</li>
+                        <li>Programação de Soluções Computacionais</li>
+                        <li>Vida & Carreira</li>
+                        <li>Ambientes Computacionais</li>
+                        <li>Sistemas Computacionais e Segurança</li>
+                        <li>Gestão e Qualidade de Software</li>
+                        <li>Usabilidade, Desenvolvimento Web, Mobile e Jogos</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2> Perfil Pessoal</h2>
+                    <p class="profile-text">
+                        Sou mineiro, natural de Belo Horizonte, estou com 19 anos atualmente. Faço estágio de programação e resolução de problemas com IA na Cidade Administrativa, na MGI, onde tenho a oportunidade de aplicar conhecimentos teóricos em projetos práticos.
+                    </p>
+                    <p class="profile-text">
+                        Gosto bastante de futebol, sou cruzeirense e frequento o Mineirão sempre que tenho oportunidade. O esporte é uma das minhas paixões e me ajuda a manter o equilíbrio entre os estudos e o lazer.
+                    </p>
+                    <p class="profile-text">
+                        Tenho grande interesse em tecnologia, especialmente em inteligência artificial e desenvolvimento de software. Sempre busco aprender novas linguagens de programação e me manter atualizado com as tendências do mercado tech.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2> Redes Sociais</h2>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pedro-christovam-29a3a22a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-link">
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Pedrochristovam" target="_blank" class="social-link">
+                            GitHub
+                        </a>
+                        <a href="https://www.instagram.com/christovam_?igsh=MWd3aGJmbjR2NGVnbA%3D%3D&utm_source=qr" target="_blank" class="social-link">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changePhoto(thumbnail) {
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+            document.getElementById('mainPhoto').src = thumbnail.src;
+            document.getElementById('mainPhoto').alt = thumbnail.alt;
+        }
+    </script>
+</body>
+</html>
