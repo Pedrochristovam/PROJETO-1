@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Aluno - Pedro Christovam</title>
+    <link rel="stylesheet" href="Desing/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Pedro Christovam Marques</h1>
+            <p>Estudante de Ciência da Computação</p>
+        </div>
+
+        
+        <div class="content-grid">
+            <div class="sidebar">
+                <div class="card">
+                    <h2>Galeria de Fotos</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-container">
+                            <img id="mainPhoto" class="main-photo" src="" alt="Foto Principal">
+                            
+                        </div>
+                        <div class="photo-thumbnails">
+                            <img class="thumbnail active" src="imagens/pedro2.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="imagens/pedro2f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="imagens/pedro3f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="imagens/pedro4f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+               <div class="card">
+        <h2>Informações Básicas</h2>
+        <table class="info-table">
+            <tr>
+                <td>Nome Completo:</td>
+                <td>Pedro Christovam Marques</td>
+            </tr>
+            <tr>
+                <td>RA:</td>
+                <td>124117694</td>
+            </tr>
+            <tr>
+                <td>CPF:</td>
+                <td>
+                    <input type="text" 
+                           class="editable-input" 
+                           id="cpf-input" 
+                           placeholder="000.000.000-00"
+                           maxlength="14">
+                    <span class="status-icon" id="cpf-status"></span>
+                    <div class="validation-message" id="cpf-message"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Curso:</td>
+                <td>Ciências da Computação</td>
+            </tr>
+            <tr>
+                <td>Período:</td>
+                <td>3º Semestre</td>
+            </tr>
+            <tr>
+                <td>Idade:</td>
+                <td>19 anos</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Contato</h2>
+        <table class="info-table">
+            <tr>
+                <td>Endereço:</td>
+                <td class="address-text">Rua Tucuman 565
+Bairro São Geraldo
+Região Leste</td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td>
+                    <input type="email" 
+                           class="editable-input" 
+                           id="email-input" 
+                           value="pedrochristovam053@gmail.com">
+                    <span class="status-icon" id="email-status"></span>
+                    <div class="validation-message" id="email-message"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Cidade:</td>
+                <td>Belo Horizonte - MG</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Informações Adicionais</h2>
+        <table class="info-table" id="additional-info-table">
+        </table>
+        
+        <div class="add-info-section">
+            <h3 style="margin-top: 0; color: #2c3e50;">Adicionar Nova Informação</h3>
+            <div class="add-info-form">
+                <div class="form-group">
+                    <label for="info-label">Nome</label>
+                    <input type="text" 
+                           id="info-label" 
+                           class="editable-input" >
+                </div>
+                <div class="form-group">
+                    <label for="info-value">Conteudo</label>
+                    <input type="text" 
+                           id="info-value" 
+                           class="editable-input" >
+                </div>
+                <button class="add-btn" onclick="adicionarInformacao()">
+                    Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+        
+            <div class="card">
+        <h2>Unidades Curriculares Cursadas</h2>
+        <div class="counter">
+            Total de UCs: <span id="uc-count">7</span>
+        </div>
+        <div class="instructions">
+            
+        </div>
+        <ul class="uc-list" id="uc-list">
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Modelagem de Software</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Programação de Soluções Computacionais</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Vida & Carreira</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Ambientes Computacionais</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Sistemas Computacionais e Segurança</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Gestão e Qualidade de Software</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+            <li class="uc-item" draggable="true">
+                <span class="drag-handle">⋮⋮</span>
+                <div class="uc-content">Usabilidade, Desenvolvimento Web, Mobile e Jogos</div>
+                <div class="uc-controls">
+                    <button class="arrow-btn" onclick="moverUC(this, 'up')" title="Mover para cima">↑</button>
+                    <button class="arrow-btn" onclick="moverUC(this, 'down')" title="Mover para baixo">↓</button>
+                </div>
+            </li>
+        </ul>
+        <div class="btn-container">
+            <button class="add-btn" onclick="adicionarUC()">
+                 Adicionar Nova UC
+            </button>
+        </div>
+    </div>
+
+</body>
+                
+                <div class="card">
+                    <h2>Perfil Pessoal</h2>
+                    <p class="profile-text">
+                        Sou nascido e criado em Belo Horizonte, tenho 19 anos, e atualmente faço estagio na cidade Adm, na MGI- na parte de desenvolvimento e automação com IA.
+                    </p>
+                    <p class="profile-text">
+                       Gosto de futebol e acompanho o meu time no estadio sempre que da, sou cruzeirense.
+                    </p>
+                </div>
+
+                
+                <div class="card">
+                    <h2> Redes Sociais</h2>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pedro-christovam-29a3a22a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-link">
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Pedrochristovam" target="_blank" class="social-link">
+                            GitHub
+                        </a>
+                        <a href="https://www.instagram.com/christovam_?igsh=MWd3aGJmbjR2NGVnbA%3D%3D&utm_source=qr" target="_blank" class="social-link">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changePhoto(thumbnail) {
+          
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            
+            thumbnail.classList.add('active');
+            
+       
+            const mainPhoto = document.getElementById('mainPhoto');
+            mainPhoto.src = thumbnail.src;
+            mainPhoto.alt = thumbnail.alt;
+            mainPhoto.style.display = 'block';
+        }
+
+        function changeToPlaceholder(element, emoji, description) {
+            
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+         
+            element.classList.add('active');
+            
+            
+            const mainPhoto = document.getElementById('mainPhoto');
+            const photoContainer = mainPhoto.parentElement;
+            
+          
+            mainPhoto.style.display = 'none';
+            
+           
+            const existingPlaceholder = photoContainer.querySelector('.main-placeholder');
+            if (existingPlaceholder) {
+                existingPlaceholder.remove();
+            }
+            
+       
+            const placeholder = document.createElement('div');
+            placeholder.className = 'main-photo main-placeholder';
+            placeholder.style.cssText = `
+                width: 250px;
+                height: 250px;
+                border-radius: 15px;
+                border: 3px solid var(--primary-color);
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                font-size: 60px;
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            `;
+            placeholder.innerHTML = `
+                <div>${emoji}</div>
+                <div style="font-size: 14px; margin-top: 10px;">${description}</div>
+            `;
+            
+            photoContainer.appendChild(placeholder);
+        }
+    </script>
+    <script src="Validação/informacoes.JS"></script>
+
+</body>
+</html>

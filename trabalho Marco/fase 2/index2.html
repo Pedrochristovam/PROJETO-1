@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Aluno - Pedro Christovam</title>
+    <link rel="stylesheet" href="desing/styleapp.css">
+   
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Pedro Christovam Marques</h1>
+            <p>Estudante de Ciência da Computação</p>
+        </div>
+
+        
+        <div class="content-grid">
+            <div class="sidebar">
+                <div class="card">
+                    <h2>Galeria de Fotos</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-container">
+                            <img id="mainPhoto" class="main-photo" src="" alt="Foto Principal">
+                            
+                        </div>
+                        <div class="photo-thumbnails">
+                            <img class="thumbnail active" src="pedro2.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro2f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro3f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro4f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="card">
+                    <h2> Informações Básicas</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Nome Completo:</td>
+                            <td>Pedro Christovam Marques</td>
+                        </tr>
+                        <tr>
+                            <td>RA:</td>
+                            <td>124117694</td>
+                        </tr>
+                        <tr>
+                            <td>Curso:</td>
+                            <td>Ciências da Computação</td>
+                        </tr>
+                        <tr>
+                            <td>Período:</td>
+                            <td>3º Semestre</td>
+                        </tr>
+                        <tr>
+                            <td>Idade:</td>
+                            <td>19 anos</td>
+                        </tr>
+                    </table>
+                </div>
+
+                
+                <div class="card">
+                    <h2>Contato</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Endereço:</td>
+                            <td>Rua Tucuman 565<br>Bairro São Geraldo<br>Região Leste</td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>pedrochristovam053@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Cidade:</td>
+                            <td>Belo Horizonte - MG</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        
+            <div class="main-content">
+            
+                <div class="card">
+                    <h2> Unidades Curriculares Cursadas</h2>
+                    <ul class="uc-list">
+                        <li>Modelagem de Software</li>
+                        <li>Programação de Soluções Computacionais</li>
+                        <li>Vida & Carreira</li>
+                        <li>Ambientes Computacionais</li>
+                        <li>Sistemas Computacionais e Segurança</li>
+                        <li>Gestão e Qualidade de Software</li>
+                        <li>Usabilidade, Desenvolvimento Web, Mobile e Jogos</li>
+                    </ul>
+                </div>
+
+                
+                <div class="card">
+                    <h2>Perfil Pessoal</h2>
+                    <p class="profile-text">
+                        Sou nascido e criado em Belo Horizonte, tenho 19 anos, e atualmente faço estagio na cidade Adm, na MGI- na parte de desenvolvimento e automação com IA.
+                    </p>
+                    <p class="profile-text">
+                       Gosto de futebol e acompanho o meu time no estadio sempre que da, sou cruzeirense.
+                    </p>
+                </div>
+
+                
+                <div class="card">
+                    <h2> Redes Sociais</h2>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pedro-christovam-29a3a22a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-link">
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Pedrochristovam" target="_blank" class="social-link">
+                            GitHub
+                        </a>
+                        <a href="https://www.instagram.com/christovam_?igsh=MWd3aGJmbjR2NGVnbA%3D%3D&utm_source=qr" target="_blank" class="social-link">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changePhoto(thumbnail) {
+          
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            
+            thumbnail.classList.add('active');
+            
+       
+            const mainPhoto = document.getElementById('mainPhoto');
+            mainPhoto.src = thumbnail.src;
+            mainPhoto.alt = thumbnail.alt;
+            mainPhoto.style.display = 'block';
+        }
+
+        function changeToPlaceholder(element, emoji, description) {
+            
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+         
+            element.classList.add('active');
+            
+            
+            const mainPhoto = document.getElementById('mainPhoto');
+            const photoContainer = mainPhoto.parentElement;
+            
+          
+            mainPhoto.style.display = 'none';
+            
+           
+            const existingPlaceholder = photoContainer.querySelector('.main-placeholder');
+            if (existingPlaceholder) {
+                existingPlaceholder.remove();
+            }
+            
+       
+            const placeholder = document.createElement('div');
+            placeholder.className = 'main-photo main-placeholder';
+            placeholder.style.cssText = `
+                width: 250px;
+                height: 250px;
+                border-radius: 15px;
+                border: 3px solid var(--primary-color);
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                font-size: 60px;
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            `;
+            placeholder.innerHTML = `
+                <div>${emoji}</div>
+                <div style="font-size: 14px; margin-top: 10px;">${description}</div>
+            `;
+            
+            photoContainer.appendChild(placeholder);
+        }
+    </script>
+</body>
+</html>
