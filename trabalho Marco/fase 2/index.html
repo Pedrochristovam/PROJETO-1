@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Aluno - Pedro Christovam</title>
+    <style>
+        /* Paleta de cores inspirada em tons de roxo e azul */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #a855f7;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--background-color) 0%, #e0e7ff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Layout com DIVs */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        /* Galeria de Fotos */
+        .photo-gallery {
+            text-align: center;
+        }
+
+        .photo-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .main-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 15px;
+            border: 3px solid var(--primary-color);
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .photo-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Informações básicas como tabela */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .info-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            color: var(--primary-color);
+            width: 40%;
+        }
+
+        /* Lista de UCs */
+        .uc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .uc-list li {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Links sociais */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Seção de perfil */
+        .profile-text {
+            text-align: justify;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .main-photo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pedro Christovam Marques</h1>
+            <p>Estudante de Ciência da Computação</p>
+        </div>
+
+        
+        <div class="content-grid">
+            <div class="sidebar">
+                <div class="card">
+                    <h2>Galeria de Fotos</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-container">
+                            <img id="mainPhoto" class="main-photo" src="" alt="Foto Principal">
+                            
+                        </div>
+                        <div class="photo-thumbnails">
+                            <img class="thumbnail active" src="pedro2.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro2f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro3f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                            <img class="thumbnail active" src="pedro4f.foto.jpg" alt="Foto Principal" onclick="changePhoto(this)" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="card">
+                    <h2> Informações Básicas</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Nome Completo:</td>
+                            <td>Pedro Christovam Marques</td>
+                        </tr>
+                        <tr>
+                            <td>RA:</td>
+                            <td>124117694</td>
+                        </tr>
+                        <tr>
+                            <td>Curso:</td>
+                            <td>Ciências da Computação</td>
+                        </tr>
+                        <tr>
+                            <td>Período:</td>
+                            <td>3º Semestre</td>
+                        </tr>
+                        <tr>
+                            <td>Idade:</td>
+                            <td>19 anos</td>
+                        </tr>
+                    </table>
+                </div>
+
+                
+                <div class="card">
+                    <h2>Contato</h2>
+                    <table class="info-table">
+                        <tr>
+                            <td>Endereço:</td>
+                            <td>Rua Tucuman 565<br>Bairro São Geraldo<br>Região Leste</td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>pedrochristovam053@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Cidade:</td>
+                            <td>Belo Horizonte - MG</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        
+            <div class="main-content">
+            
+                <div class="card">
+                    <h2> Unidades Curriculares Cursadas</h2>
+                    <ul class="uc-list">
+                        <li>Modelagem de Software</li>
+                        <li>Programação de Soluções Computacionais</li>
+                        <li>Vida & Carreira</li>
+                        <li>Ambientes Computacionais</li>
+                        <li>Sistemas Computacionais e Segurança</li>
+                        <li>Gestão e Qualidade de Software</li>
+                        <li>Usabilidade, Desenvolvimento Web, Mobile e Jogos</li>
+                    </ul>
+                </div>
+
+                
+                <div class="card">
+                    <h2>Perfil Pessoal</h2>
+                    <p class="profile-text">
+                        Sou nascido e criado em Belo Horizonte, tenho 19 anos, e atualmente faço estagio na cidade Adm, na MGI- na parte de desenvolvimento e automação com IA.
+                    </p>
+                    <p class="profile-text">
+                       Gosto de futebol e acompanho o meu time no estadio sempre que da, sou cruzeirense.
+                    </p>
+                </div>
+
+                
+                <div class="card">
+                    <h2> Redes Sociais</h2>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pedro-christovam-29a3a22a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-link">
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Pedrochristovam" target="_blank" class="social-link">
+                            GitHub
+                        </a>
+                        <a href="https://www.instagram.com/christovam_?igsh=MWd3aGJmbjR2NGVnbA%3D%3D&utm_source=qr" target="_blank" class="social-link">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changePhoto(thumbnail) {
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Add active class to clicked thumbnail
+            thumbnail.classList.add('active');
+            
+            // Change main photo
+            const mainPhoto = document.getElementById('mainPhoto');
+            mainPhoto.src = thumbnail.src;
+            mainPhoto.alt = thumbnail.alt;
+            mainPhoto.style.display = 'block';
+        }
+
+        function changeToPlaceholder(element, emoji, description) {
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Add active class to clicked thumbnail
+            element.classList.add('active');
+            
+            // Create placeholder for main photo
+            const mainPhoto = document.getElementById('mainPhoto');
+            const photoContainer = mainPhoto.parentElement;
+            
+            // Hide the img element and show placeholder
+            mainPhoto.style.display = 'none';
+            
+            // Remove existing placeholder if any
+            const existingPlaceholder = photoContainer.querySelector('.main-placeholder');
+            if (existingPlaceholder) {
+                existingPlaceholder.remove();
+            }
+            
+            // Create new placeholder
+            const placeholder = document.createElement('div');
+            placeholder.className = 'main-photo main-placeholder';
+            placeholder.style.cssText = `
+                width: 250px;
+                height: 250px;
+                border-radius: 15px;
+                border: 3px solid var(--primary-color);
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                font-size: 60px;
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            `;
+            placeholder.innerHTML = `
+                <div>${emoji}</div>
+                <div style="font-size: 14px; margin-top: 10px;">${description}</div>
+            `;
+            
+            photoContainer.appendChild(placeholder);
+        }
+    </script>
+</body>
+</html>
